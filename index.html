@@ -1,1 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ebac Motors</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script defer src="Assets/Plugins/jquery.mask.min.js"></script>
+        <script defer src="index.js"></script>
+    </head>
+
+    <body>
+        <main class="grid-page">
+            <section class="form-section">
+                
+                <div class="superior-part-form flex-col">
+                    <div class="titles-form-section flex-col">
+                        <h1>Faça já sua cotação!</h1>
+                        <p>Ficou interessado(a) em algum modelo
+                            ou está com alguma dúvida? Entre em
+                            contato com nosso time de especialistas
+                            pelo formulário abaixo e iremos te responder
+                            o mais rápido possível.
+                        </p>
+                    </div>
+                    <button type="button" class="flex-row worktime-btn">
+                        <span class="icon-clock"></span>
+                        Horário de Funcionamento
+                    </button>
+                </div>
+
+                <div class="toggle-button flex-row">
+                    <div class="btn-toggle-background"></div>
+                    <button class="flex-row btn-left clicked"><span class="icon-coin"></span>Quero cotar</button>
+                    <button class="flex-row btn-right"><span class="icon-doubt"></span>Tenho uma dúvida</button>
+                </div>
+
+                <form class="flex-col form-quero-cotar">
+                    <div class="input-container flex-col">
+                        <label for="completeName">Nome completo</label>
+                        <input
+                        type="text"
+                        name="completeName"
+                        placeholder="ex: Nicolas Floriano"
+                        />
+                    </div>
+
+                    <div class="input-container flex-col">
+                        <label for="email">Endereço de e-mail</label>
+                        <input
+                        type="email"
+                        name="email"
+                        placeholder="email@exemplo.com"
+                        />
+                    </div>
+
+                    <div class="flex-row">
+
+                        <div class="input-container flex-col">
+                            <label for="phone">Telefone/Celular</label>
+                            <input
+                            type="tel"
+                            name="phone"
+                            placeholder="(00) 00000-0000"
+                            />
+                        </div>
+
+                        <div class="input-container flex-col">
+                            <label for="cpf">CPF</label>
+                            <input
+                            type="text"
+                            name="cpf"
+                            placeholder="000.000.000-00"
+                            />
+                        </div>
+
+                    </div>
+
+                    <div class="flex-col address-area">
+
+                        <div class="flex-row address-area-1">
+
+                            <div class="input-container flex-col">
+                                <label for="addressRua">Rua</label>
+                                <input
+                                type="text"
+                                name="addressRua"
+                                placeholder="Rua de Exemplo"
+                                />
+                            </div>
+
+                            <div class="input-container flex-col">
+                                <label for="addressRua">Número</label>
+                                <input
+                                type="text"
+                                name="addressNumero"
+                                placeholder="00"
+                                />
+                            </div>
+
+                        </div>
+
+                        <div class="flex-row address-area-2">
+
+                            <div class="input-container flex-col">
+                                <label for="addressBairro">Bairro</label>
+                                <input
+                                type="text"
+                                name="addressBairro"
+                                placeholder="Bairro de Exemplo"
+                                />
+                            </div>
+
+                            <div class="input-container flex-col">
+                                <label for="addressCep">CEP</label>
+                                <input
+                                type="text"
+                                name="addressCep"
+                                placeholder="00000-000"
+                                />
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="input-container flex-col vi-area dropdown">
+                        <label for="vehicle">Veículo de Interesse</label>
+                        <div class="flex-row input-vi-area">
+                            <input
+                            type="text"
+                            name="vehicle"
+                            placeholder="ex: BMW X3"
+                            readonly
+                            />
+                            <span class="icon-arrow"></span>
+                        </div>
+                        <ul class="flex-col menu-vi">
+                            <li>BMW X3</li>
+                            <li>Tesla Model 3</li>
+                            <li>Porsche 911</li>
+                            <li>Mercedes-Benz E-Class</li>
+                            <li>Audi Q7</li>
+                        </ul>
+                    </div>
+                    <button type="submit" class="submit-btn flex-row"><span class="icon-check"></span> Enviar</button>
+                </form>
+
+                <form class="flex-col form-tenho-duvida">
+                    <div class="input-container flex-col">
+                        <label for="completeName">Nome completo</label>
+                        <input
+                        type="text"
+                        name="completeName"
+                        placeholder="ex: Nicolas Floriano"
+                        />
+                    </div>
+
+                    <div class="input-container flex-col">
+                        <label for="email">Endereço de e-mail</label>
+                        <input
+                        type="email"
+                        name="email"
+                        placeholder="email@exemplo.com"
+                        />
+                    </div>
+
+                    <div class="flex-row">
+
+                        <div class="input-container flex-col">
+                            <label for="phone">Telefone/Celular</label>
+                            <input
+                            type="tel"
+                            name="phone"
+                            placeholder="(00) 00000-0000"
+                            />
+                        </div>
+
+                        <div class="input-container flex-col">
+                            <label for="cpf">CPF</label>
+                            <input
+                            type="text"
+                            name="cpf"
+                            placeholder="000.000.000-000"
+                            />
+                        </div>
+
+                    </div>
+
+                    <div id="doubt-textarea" class="doubt-area flex-col">
+                        <label for="doubt">Motivo da dúvida</label>
+                        <textarea
+                        name="doubt"
+                        placeholder="Nos conte mais sobre sua dúvida"
+                        ></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn flex-row"><span class="icon-check"></span> Enviar</button>
+                </form>
+
+            </section>
+            <section class="videoSection">
+                <div>
+                    <p>ola</p>
+                </div>
+            </section>
+            <section class="popup-worktime flex-col">
+                <div class="popup-worktime-content flex-col">
+                    <h1>Nossos horários de funcionamento são</h1>
+                    <ul class="flex-col">
+                        <li>Segunda á sexta: 09:00 ás 18:00</li>
+                        <li>Sábado: 10:00 ás 15:00</li>
+                        <li>Domingo: <span>fechados.</span></li>
+                    </ul>
+                    <span class="icon-cancel"></span>
+                </div>
+            </section>
+        </main>
+    </body>
+
+</html>
