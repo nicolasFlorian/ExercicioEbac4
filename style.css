@@ -68,6 +68,12 @@
 .icon-clock:before {
     content: "\e903";
 }
+.icon-pause:before {
+    content: "\e906";
+}
+.icon-start:before {
+    content: "\e907";
+}
 
 /* Shorthands */
 
@@ -86,18 +92,20 @@
 body{
     height: 100vh;
     padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .grid-page{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    
-    height: 100%;
-    border: 1px solid red;
+    grid-template-columns: 1fr 1.5fr;
+
+    min-height: 100%;
 }
 
 .form-section{
-    padding: 0px 60px;
+    padding: 0px 100px;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -178,7 +186,7 @@ p{
     color: var(--secondary-text-color);
     z-index: 1;
     box-shadow: none;
-    transition: all 0.3s cubic-bezier(.60,-0.1,.2,1.1);
+    transition: all 0.5s cubic-bezier(.60,-0.1,.2,1.1);
 }
 
 .btn-toggle-background{
@@ -191,7 +199,7 @@ p{
     border-radius: var(--button-border-radius);
     box-shadow: 0px 1px 1.5px 0px rgba(0, 0, 0, 0.11);
     left: 4px;
-    transition: all 0.3s cubic-bezier(.60,-0.1,.2,1.1);
+    transition: all 0.5s cubic-bezier(.60,-0.1,.2,1.1);
 }
 
 .toggle-button button.clicked{
@@ -239,6 +247,16 @@ p{
     box-shadow: 0px 1px 1.5px 0px rgba(0, 0, 0, 0.11);
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 .form-section form div input:focus{
     outline: 1px solid var(--blue-color);
 }
@@ -264,6 +282,10 @@ p{
 .personal-area-1 div:first-child,
 .personal-area-1 div:last-child{
     width: 50%;
+}
+
+.input-container{
+    width: 100%;
 }
 
 .input-vi-area{
@@ -372,6 +394,7 @@ button[type="submit"]{
     max-width: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 button[type="submit"]:hover{
@@ -387,21 +410,23 @@ button[type="submit"] span{
 }
 
 .popup-worktime{
-    top: 0;
-    left: 0;
     background-color: #2929294e;
-    position: absolute;
     height: 100vh;
     width: 100vw;
-    z-index: 3;
-    align-items: center;
-    justify-content: center;
+    pointer-events: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
-    pointer-events: none;
 }
 
 .popup-worktime.show{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     opacity: 1;
     pointer-events: auto;
 }
@@ -445,8 +470,318 @@ button[type="submit"] span{
     background-color: var(--red-light-color);
 }
 
-.input-container[data-error]::after{
+.input-container[data-error]::after,
+div.submit-button[data-error]::after{
     content: attr(data-error);
-    font-size: 14px;
+    font-size: 12px;
     color: var(--red-color);
+}
+
+/* VIDEO SECTION */
+
+.videoSection {
+    padding-right: 100px;
+    position: relative;
+}
+
+.videoSection div.video-area{
+    height: 100%;
+    width: 100%;
+}
+
+.videoSection div.video-area .video-container{
+    height: 100%;
+    opacity: 0.3;
+    transition: all 0.5s ease;
+}
+
+.videoSection div.video-area .video-container:hover{
+    opacity: 0.6;
+}
+
+.videoSection div.video-area .video-container:hover ~ .video-content{
+    opacity: 0.2;
+}
+
+.videoSection div.video-area .video-container video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.background-video{
+    height: 100%;
+    width: calc(100% - 102px);
+    border-radius: 30px;
+    background-color: #292929;
+    position: absolute;
+    top: 0;
+    left: 1px;
+    z-index: -1;
+}
+
+.videoSection div.video-content{
+    position: absolute;
+    top: 0;
+    width: calc(100% - 101px);
+    height: 100%;
+    justify-content: space-between;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+.videoSection div.video-content header{
+    padding: 60px;
+}
+
+.videoSection div.video-content header,
+.videoSection div.video-content footer .vehicle-info{
+    justify-content: space-between;
+    align-items: center;
+}
+
+.videoSection div.video-content header .slide-icons{
+    color: var(--secondary-color);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    pointer-events: all;
+    cursor: auto;
+    height: 60px;
+    width: fit-content;
+}
+
+.slide-icons span{
+    cursor: pointer;
+}
+
+.slide-icons .pause-or-start{
+    margin-right: 15px;
+    transition: all 0.3s ease;
+    position: absolute;
+}
+
+.videoSection div.video-content header .slide-icons span:nth-child(2){
+    transform: rotate(90deg);
+    transition: all 0.3s ease;
+    padding: 10px;
+    margin-left: 50px;
+}
+
+.videoSection div.video-content header .slide-icons span:last-child{
+    transform: rotate(-90deg);
+    transition: all 0.3s ease;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+
+.videoSection div.video-content footer{
+    color: var(--secondary-color);
+    pointer-events: all;
+    padding: 60px;
+}
+
+.videoSection div.video-content footer h2{
+    margin-bottom: 50px;
+    font-size: 26px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.videoSection div.video-content footer .vehicle-info-item h4{
+    font-weight: bold;
+    margin-bottom: 5px;
+
+}
+
+.videoSection div.video-content footer button{
+    padding: 10px 20px;
+    border: none;
+    font-size: 18px;
+    font-weight: normal;
+    color: var(--secondary-color);
+    background-color: rgba(41, 41, 41, 0.4);
+    transition: all 0.3s ease;
+    border: 1px solid #484848;
+}
+
+.videoSection div.video-content footer button:hover{
+    transform: scale(1.05);
+    background-color: rgba(41, 41, 41, 0.9);
+}
+
+.videoSection div.video-content footer h2:hover{
+    transform: scale(1.02);
+}
+
+.videoSection div.video-container:hover .video-content footer {
+    transition: all 0.5s ease;
+    opacity: 0.4;
+}
+
+.videoSection div.video-content header .slide-icons span:first-child:hover{
+    transform: scale(1.3);
+}
+
+.videoSection div.video-content header .slide-icons span:nth-child(2):hover{
+    transform: scale(1.3) rotate(90deg);
+}
+
+
+.videoSection div.video-content header .slide-icons span:last-child:hover{
+    transform: scale(1.3) rotate(-90deg);
+}
+
+
+@media screen and (min-width: 600px) and (max-width: 1350px){
+    body{
+        height: fit-content;
+        width: 100%;
+    }
+
+    .grid-page {
+        grid-template-areas: 
+        'video'
+        'form';
+        grid-template-columns: 1fr;
+        grid-template-rows: 1.2fr 1fr;
+        gap: 30px;
+
+        min-height: 100%;
+    }
+
+
+    .form-section{
+        grid-area: form;
+        padding: 0px 60px;
+        justify-content: start;
+    }
+
+    .videoSection{
+        padding: 0;
+        grid-area: video;
+        height: 100%;
+    }
+
+    .background-video,
+    div.video-content{
+        width: 100% !important;
+    }
+
+    .form-section form div input,
+    .doubt-area textarea {
+        width: 100%;
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+
+
+    .address-area-1 div:first-child,
+    .address-area-1 div:last-child,
+    .address-area-2 div:first-child,
+    .address-area-2 div:last-child,
+    .personal-area-1 div:first-child,
+    .personal-area-1 div:last-child {
+        width: 100%;
+    }
+
+    .no-scroll{
+        overflow: hidden;
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 200px) and (max-width: 599px){
+    body{
+        height: fit-content;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .grid-page {
+        grid-template-areas: 
+        'video'
+        'form';
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.85fr 1fr;
+        gap: 40px;
+
+        min-height: 100%;
+    }
+
+
+    .form-section{
+        grid-area: form;
+        padding: 0px 20px;
+    }
+
+    .videoSection{
+        padding: 0;
+        grid-area: video;
+        height: 100%;
+    }
+
+    .background-video,
+    div.video-content{
+        width: 100% !important;
+    }
+
+    .videoSection div.video-content header,
+    .videoSection div.video-content footer{
+        padding: 20px 30px;
+    }
+
+    .slide-icons .left{
+        margin-left: 30px !important;
+    }
+
+    .description-vehicle{
+        font-size: 16px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .vehicle-info-item h4{
+        font-size: 12px !important;
+    }
+
+    .vehicle-info-item p{
+        font-size: 10px !important;
+    }
+
+    .interested-btn{
+        font-size: 14px !important;
+    }
+
+    .form-section form div input,
+    .doubt-area textarea {
+        width: 100%;
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+
+
+    .address-area-1 div:first-child,
+    .address-area-1 div:last-child,
+    .address-area-2 div:first-child,
+    .address-area-2 div:last-child,
+    .personal-area-1 div:first-child,
+    .personal-area-1 div:last-child {
+        width: 100%;
+    }
+
+    .popup-worktime{
+        flex-direction: center !important;
+        justify-content: center !important;
+    }
+
+    .popup-worktime-content{
+        width: 90%;
+    }
+
+    .no-scroll{
+        overflow: hidden;
+        height: 100%;
+    }
 }

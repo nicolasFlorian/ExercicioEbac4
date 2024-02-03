@@ -137,6 +137,7 @@
                             name="vehicle"
                             placeholder="ex: BMW X3"
                             readonly
+                            required
                             />
                             <span class="icon-arrow"></span>
                         </div>
@@ -148,7 +149,9 @@
                             <li>Audi Q7</li>
                         </ul>
                     </div>
-                    <button type="submit" class="submit-btn flex-row"><span class="icon-check"></span> Enviar</button>
+                    <div class="submit-button">
+                        <button type="submit" class="submit-btn flex-row"><span class="icon-check"></span> Enviar</button>
+                    </div>
                 </form>
 
                 <form class="flex-col form-tenho-duvida">
@@ -199,13 +202,42 @@
                         placeholder="Nos conte mais sobre sua dúvida"
                         ></textarea>
                     </div>
-                    <button type="submit" class="submit-btn flex-row"><span class="icon-check"></span> Enviar</button>
+                    <div class="submit-button">
+                        <button type="submit" class="submit-btn flex-row"><span class="icon-check"></span> Enviar</button>
+                    </div>
                 </form>
 
             </section>
             <section class="videoSection">
-                <div>
-                    <p>ola</p>
+                <div class="video-area">
+                    <div class="video-container">
+                        <video autoplay muted src="Assets/Videos/BMW X3.webm" data-index="0"></video>
+                    </div>
+                    <div class="background-video"></div>
+                    <div class="video-content flex-col">
+                        <header class="flex-row">
+                            <div class="slide-icons">
+                                <span class="icon-pause pause-or-start"></span>
+                                <span class="icon-arrow left"></span>
+                                <span class="icon-arrow right"></span>
+                            </div>
+                            <img src="Assets/Icons/logo.svg" alt="logo ebac">
+                        </header>
+                        <footer>
+                            <h2 class="description-vehicle">
+                                O BMW X3 combina luxo e desempenho, oferecendo um interior
+                                elegante, tecnologia avançada e uma condução dinâmica. Um SUV
+                                premium que impressiona.
+                            </h2>
+                            <div class="flex-row vehicle-info">
+                                <div class="flex-col vehicle-info-item">
+                                    <h4>BMW X3</h4>
+                                    <p>BMW</p>
+                                </div>
+                                <button type="button" class="interested-btn">Tenho Interesse</button>
+                            </div>
+                        </footer>
+                    </div>
                 </div>
             </section>
             <section class="popup-worktime flex-col">
